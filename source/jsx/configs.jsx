@@ -9,8 +9,8 @@ define([], function() {
     var local = {
         env: 'local',
         Skylink: {
-            apiMCUKey: '7bcba74c-ee42-4fb7-ba17-94a9edb3c1bf',
-            apiNoMCUKey: '7e31b061-71e6-4dd7-bd55-516579973930'
+            apiMCUKey: '',
+            apiNoMCUKey: '8a889d70-17f3-4334-88e7-b82730268d17'
         },
         maxUsers: 4
     };
@@ -18,8 +18,8 @@ define([], function() {
     var dev = {
         env: 'dev',
         Skylink: {
-            apiMCUKey: '7bcba74c-ee42-4fb7-ba17-94a9edb3c1bf',
-            apiNoMCUKey: '7e31b061-71e6-4dd7-bd55-516579973930'
+            apiMCUKey: '',
+            apiNoMCUKey: '8a889d70-17f3-4334-88e7-b82730268d17'
         },
         maxUsers: 4
     };
@@ -27,14 +27,14 @@ define([], function() {
     var prod = {
         env: 'prod',
         Skylink: {
-            apiMCUKey: '7bcba74c-ee42-4fb7-ba17-94a9edb3c1bf',
-            apiNoMCUKey: '7e31b061-71e6-4dd7-bd55-516579973930'
+            apiMCUKey: '',
+            apiNoMCUKey: '70280587-84b9-490c-8295-71b659f1b361'
         },
         maxUsers: 4
     };
 
-    return location.host === 'getaroom.io' ? prod : (
-            location.host === 'dev.getaroom.io' ? dev : local
+    return location.host.indexOf('http://www.cgp-group.com/webchat') > -1  ? prod : (
+            location.host.indexOf('https://web.cgp-data-services.com') > -1 ? dev : local
         );
 
 });

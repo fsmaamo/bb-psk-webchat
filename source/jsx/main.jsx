@@ -298,8 +298,8 @@ define([
             Router.configure({
                 html5history: true
             }).mount({
-                '/:room': this.joinRoom.bind(this),
-                '/': this.enterFoyer.bind(this)
+                '/webchat/:room': this.joinRoom.bind(this),
+                '/webchat/': this.enterFoyer.bind(this)
             });
 
             Router.init();

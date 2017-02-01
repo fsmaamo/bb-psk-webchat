@@ -218,9 +218,10 @@ module.exports = function (grunt) {
             dev: {
                 options: {
                     base: '<%= source %>/',
-                    port: 8085,
-                    open: 'https://localhost:8085',
+                    port: 1337,
+                    open: {target: 'https://127.0.0.1:1337'},
                     protocol: 'https',
+                    hostname: '*',
                     key: grunt.file.read('server.key').toString(),
                     cert: grunt.file.read('server.crt').toString(),
                     ca: grunt.file.read('ca.crt').toString()
