@@ -20,7 +20,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "postinstall": "npm install && grunt stage"
+    "postinstall": "grunt stage && grunt publish"
   },
   "dependencies": {
     "skylinkjs": "^0.6.0"
