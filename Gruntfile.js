@@ -288,47 +288,47 @@ module.exports = function (grunt) {
 
     });
 
-    grunt.registerTask('versionise',
-        'Adds version meta intormation to index.html', function () {
-        var done = this.async(),
-            arr = [];
-
-        grunt.util.spawn({
-            cmd : 'git',
-            args : ['log', '-1', '--pretty=format:%h\n %ci']
-        }, function (err, result) {
-            if (err) {
-                return done(false);
-            }
-            arr = result.toString().split('\n ');
-            grunt.config('meta.rev', arr[0]);
-            grunt.config('meta.date', arr[1]);
-        });
-
-        grunt.util.spawn({
-            cmd : 'git',
-            args : [
-                'for-each-ref',
-                '--sort=*authordate',
-                '--format="%(tag)"',
-                'refs/tags'
-            ]
-        }, function (err, result) {
-            if (err) {
-                return done(false);
-            }
-            arr = result.toString().split('\n');
-
-            var tag = arr[arr.length - 1];
-            tag = tag.toString();
-            grunt.config('meta.tag', tag);
-
-            done(result);
-        });
-
-
-
-    });
+    // grunt.registerTask('versionise',
+    //     'Adds version meta intormation to index.html', function () {
+    //     var done = this.async(),
+    //         arr = [];
+    //
+    //     grunt.util.spawn({
+    //         cmd : 'git',
+    //         args : ['log', '-1', '--pretty=format:%h\n %ci']
+    //     }, function (err, result) {
+    //         if (err) {
+    //             return done(false);
+    //         }
+    //         arr = result.toString().split('\n ');
+    //         grunt.config('meta.rev', arr[0]);
+    //         grunt.config('meta.date', arr[1]);
+    //     });
+    //
+    //     grunt.util.spawn({
+    //         cmd : 'git',
+    //         args : [
+    //             'for-each-ref',
+    //             '--sort=*authordate',
+    //             '--format="%(tag)"',
+    //             'refs/tags'
+    //         ]
+    //     }, function (err, result) {
+    //         if (err) {
+    //             return done(false);
+    //         }
+    //         arr = result.toString().split('\n');
+    //
+    //         var tag = arr[arr.length - 1];
+    //         tag = tag.toString();
+    //         grunt.config('meta.tag', tag);
+    //
+    //         done(result);
+    //     });
+    //
+    //
+    //
+    // });
 
     grunt.registerTask('stage', [
         'clean:staging',
@@ -345,7 +345,7 @@ module.exports = function (grunt) {
         'htmlmin:staging',
         'requirejs',
         'filerev:js',
-        'versionise',
+        // 'versionise',
         'usemin:html'
     ]);
 
