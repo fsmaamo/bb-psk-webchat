@@ -33,7 +33,7 @@ define([], function() {
         maxUsers: 4
     };
 
-    return location.host.indexOf('http://www.cgp-group.com/webchat') > -1  ? prod : (
+    return location.host.indexOf('protected-brushlands-27139.herokuapp.com') > -1  ? prod : (
             location.host.indexOf('https://web.cgp-data-services.com') > -1 ? dev : local
         );
 
