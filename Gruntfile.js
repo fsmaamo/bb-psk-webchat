@@ -219,8 +219,8 @@ module.exports = function (grunt) {
                 options: {
                     base: '<%= source %>/',
                     port: 1337,
-                    open: {target: 'https://127.0.0.1:1337'},
-                    protocol: 'https',
+                    open: {target: 'http://127.0.0.1:1337'},
+                    protocol: 'http',
                     hostname: '*',
                     key: grunt.file.read('server.key').toString(),
                     cert: grunt.file.read('server.crt').toString(),
