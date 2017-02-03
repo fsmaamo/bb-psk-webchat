@@ -29,11 +29,11 @@ define([
         handleStartRoom: function() {
             var room = this.props.state.room.useMCU ? 'm' : '';
             room = room + Utils.uuid(6);
-            Router.setRoute('/webchat/' + room);
+            Router.setRoute('/' + room);
         },
         handleLeaveRoom: function() {
             Skylink.leaveRoom();
-            Router.setRoute('/webchat/');
+            Router.setRoute('/');
         },
         handleVideoMute: function() {
             var user = this.props.state.users.filter(function (user) {
