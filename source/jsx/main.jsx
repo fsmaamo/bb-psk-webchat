@@ -298,8 +298,8 @@ define([
             Router.configure({
                 html5history: false
             }).mount({
-                '/:room': this.joinRoom.bind(this),
-                '/': this.enterFoyer.bind(this)
+                '/#/:room': this.joinRoom.bind(this),
+                '/#/': this.enterFoyer.bind(this)
             });
 
             Router.init();
