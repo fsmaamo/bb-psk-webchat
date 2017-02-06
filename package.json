@@ -17,11 +17,6 @@
       "url": "http://github.com/serrynaimo/getaroom"
     }
   ],
-//  "main": "server.js",
-//  "scripts": {
-//    "start": "node server.js",
-//    "postinstall": "grunt stage"
-//  },
   "scripts": {
     "start": "grunt dev"
   },
