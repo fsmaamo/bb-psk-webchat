@@ -296,7 +296,7 @@ define([
         },
         componentDidMount: function() {
             Router.configure({
-                html5history: false
+                html5history: true
             }).mount({
                 '/:room': this.joinRoom.bind(this),
                 '/': this.enterFoyer.bind(this)
