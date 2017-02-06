@@ -231,8 +231,8 @@ module.exports = function (grunt) {
                 options: {
                     base: '<%= production %>/',
                     port: 8080,
-                    open: 'https://localhost:8080',
-                    protocol: 'https',
+                    open: 'http://localhost:8080',
+                    protocol: 'http',
                     key: grunt.file.read('server.key').toString(),
                     cert: grunt.file.read('server.crt').toString(),
                     ca: grunt.file.read('ca.crt').toString()
@@ -351,8 +351,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('publish', [
         'clean:production',
-        'copy:production'
-        //'connect:production:keepalive'
+        'copy:production',
+        'connect:production:keepalive'
     ]);
 
     grunt.registerTask('dev', [

@@ -18,9 +18,11 @@
     }
   ],
   "scripts": {
-    "start": "grunt dev"
+    "start": "grunt publish",
+    "postinstall": "grunt stage"
   },
   "dependencies": {
+    "express": "^4.14.1",
     "skylinkjs": "^0.6.0"
   },
   "devDependencies": {
