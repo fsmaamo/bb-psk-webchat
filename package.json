@@ -17,10 +17,13 @@
       "url": "http://github.com/serrynaimo/getaroom"
     }
   ],
-  "main": "server.js",
+//  "main": "server.js",
+//  "scripts": {
+//    "start": "node server.js",
+//    "postinstall": "grunt stage"
+//  },
   "scripts": {
-    "start": "node server.js",
-    "postinstall": "grunt stage"
+    "start": "grunt dev"
   },
   "dependencies": {
     "skylinkjs": "^0.6.0"
