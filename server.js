@@ -9,7 +9,7 @@ server.get('/psk*', function(req, res){
     res.sendFile(__dirname + '/staging/index.html');
 });
 
-var port = 8000;
+var port = (process.env.PORT || 5000);
 server.listen(port, function() {
     console.log('server listening on port ' + port);
 });
