@@ -37,8 +37,8 @@ define([
                     }
                 ],
                 state: Constants.AppState.FOYER,
-                controls: true,
-                chat: true,
+                controls: false,
+                chat: false,
                 room: {
                     id: '',
                     messages: [],
