@@ -8,8 +8,9 @@ define([
     'configs',
     'utils',
     'components/userareas',
-    'components/controls',
-    'components/chat'
+    'components/controls'
+    // ,
+    // 'components/chat'
 ], function (
     React,
     Router,
@@ -18,8 +19,9 @@ define([
     Configs,
     Utils,
     UserAreas,
-    Controls,
-    Chat
+    Controls
+    // ,
+    // Chat
 ) {
 
     var App = React.createClass({displayName: 'App',
@@ -38,7 +40,7 @@ define([
                 ],
                 state: Constants.AppState.FOYER,
                 controls: false,
-                chat: false,
+                // chat: false,
                 room: {
                     id: '',
                     messages: [],
