@@ -168,28 +168,28 @@ define([
                 self.setState(state);
             });
 
-           Skylink.on('incomingMessage', function(message, peerId, peerInfo, isSelf) {
-                if(message.content.type !== 'chat') {
-                    return;
-                }
-
-                var newMessage = {
-                    user: isSelf ? 0 : peerId,
-                    name: peerInfo.userData.name,
-                    type: Constants.MessageType.MESSAGE,
-                    content: message.content.content,
-                    date: message.content.date
-                };
-
-                var messages = self.state.room.messages;
-                messages.push(newMessage);
-
-                self.setState({
-                    room: Utils.extend(self.state.room, {
-                        messages: messages
-                    })
-                });
-            });
+           // Skylink.on('incomingMessage', function(message, peerId, peerInfo, isSelf) {
+           //      if(message.content.type !== 'chat') {
+           //          return;
+           //      }
+           //
+           //      var newMessage = {
+           //          user: isSelf ? 0 : peerId,
+           //          name: peerInfo.userData.name,
+           //          type: Constants.MessageType.MESSAGE,
+           //          content: message.content.content,
+           //          date: message.content.date
+           //      };
+           //
+           //      var messages = self.state.room.messages;
+           //      messages.push(newMessage);
+           //
+           //      self.setState({
+           //          room: Utils.extend(self.state.room, {
+           //              messages: messages
+           //          })
+           //      });
+           //  });
 
             Skylink.on('peerLeft', function(peerId, peerInfo, isSelf) {
                 var state = {
@@ -235,23 +235,23 @@ define([
             });
 
             Dispatcher = {
-                sharescreen: function (enable) {
-                    self.setState({
-                        users: self.state.users.map(function (user) {
-                            if(user.id === 0) {
-                                user.screensharing = enable;
-                            }
-                            return user;
-                        }),
-                        room: Utils.extend(self.state.room, {
-                            screensharing: enable
-                        })
-                    });
-                    Skylink.setUserData({
-                        name: self.state.users[0].name,
-                        screensharing: enable
-                    });
-                },
+                // sharescreen: function (enable) {
+                //     self.setState({
+                //         users: self.state.users.map(function (user) {
+                //             if(user.id === 0) {
+                //                 user.screensharing = enable;
+                //             }
+                //             return user;
+                //         }),
+                //         room: Utils.extend(self.state.room, {
+                //             screensharing: enable
+                //         })
+                //     });
+                //     Skylink.setUserData({
+                //         name: self.state.users[0].name,
+                //         screensharing: enable
+                //     });
+                // },
                 setMCU: function(state) {
                     self.setState({
                         room: Utils.extend(self.state.room, {
@@ -272,26 +272,27 @@ define([
                         name: name,
                         screensharing: self.state.users[0].screensharing
                     });
-                },
-                sendMessage: function(content, type) {
-                    Skylink.sendP2PMessage({
-                        content: content,
-                        type: type || 'chat',
-                        date: (new Date()).toISOString()
-                    });
-                },
-                toggleChat: function(state) {
-                    self.setState({
-                        chat: state !== undefined ? state : !self.state.chat
-                    });
-                },
-                toggleControls: function(state) {
-                    if(self.state.room.status === Constants.RoomState.CONNECTED) {
-                        self.setState({
-                            controls: state !== undefined ? state : !self.state.controls
-                        });
-                    }
                 }
+                // ,
+                // sendMessage: function(content, type) {
+                //     Skylink.sendP2PMessage({
+                //         content: content,
+                //         type: type || 'chat',
+                //         date: (new Date()).toISOString()
+                //     });
+                // },
+                // toggleChat: function(state) {
+                //     self.setState({
+                //         chat: state !== undefined ? state : !self.state.chat
+                //     });
+                // },
+                // toggleControls: function(state) {
+                //     if(self.state.room.status === Constants.RoomState.CONNECTED) {
+                //         self.setState({
+                //             controls: state !== undefined ? state : !self.state.controls
+                //         });
+                //     }
+                // }
             }
         },
         componentDidMount: function() {
@@ -331,7 +332,7 @@ define([
                     screensharing: false,
                     useMCU: useMCU
                 }),
-                controls: true
+                controls: false
             });
 
             Skylink.init({
@@ -352,19 +353,19 @@ define([
                 });
             });
         },
-        handleShowControls: function(e) {
-            Dispatcher.toggleControls();
-        },
+        // handleShowControls: function(e) {
+        //     Dispatcher.toggleControls();
+        // },
         render: function() {
 
             var className = '';
 
-            if(this.state.controls) {
-                className = className + 'controls';
-            }
-            if(this.state.chat) {
-                className = className + ' chat';
-            }
+            // if(this.state.controls) {
+            //     className = className + 'controls';
+            // }
+            // if(this.state.chat) {
+            //     className = className + ' chat';
+            // }
             if((webrtcDetectedBrowser === 'chrome' && webrtcDetectedVersion > 34) ||
                 (webrtcDetectedBrowser === 'firefox' && webrtcDetectedVersion > 33) ||
                 (AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.plugin &&
@@ -374,11 +375,13 @@ define([
 
             return (
                 React.DOM.div({className: className}, 
-                    React.DOM.div({onClick: this.handleShowControls}, 
+                    React.DOM.div(
+                        // {onClick: this.handleShowControls},
                         UserAreas({state: this.state})
-                    ), 
-                    Controls({state: this.state}), 
-                    Chat({state: this.state})
+                    )
+                    // ,
+                    // Controls({state: this.state}),
+                    // Chat({state: this.state})
                 )
                 )
         }
